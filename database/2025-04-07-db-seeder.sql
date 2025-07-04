@@ -2,7 +2,7 @@ ALTER TABLE `books` CHANGE `outhor` `author` VARCHAR(255) NOT NULL;
 
 INSERT INTO `books` (`title`, `author`, `abstract`, `image`, `created_at`, `updated_at`) VALUES
 ('Il codice perduto', 'Marco Bianchi', 'Un thriller tra le rovine di una civiltà antica.', 'book1.jpg', NOW(), NOW()),
-('L\'ombra del passato', 'Giulia Verdi', 'Un romanzo che intreccia mistero e introspezione.', 'book2.jpg', NOW(), NOW()),
+('ombra del passato', 'Giulia Verdi', 'Un romanzo che intreccia mistero e introspezione.', 'book2.jpg', NOW(), NOW()),
 ('Viaggio nel tempo', 'Luca Ferri', 'Un’avventura tra le epoche per salvare il futuro.', 'book3.jpg', NOW(), NOW()),
 ('Il profumo della pioggia', 'Sara Rinaldi', 'Una storia d’amore e rinascita.', 'book4.jpg', NOW(), NOW()),
 ('Oltre il confine', 'Davide Russo', 'Una fuga verso la libertà in un mondo distopico.', 'book5.jpg', NOW(), NOW()),
@@ -145,3 +145,184 @@ INSERT INTO `reviews` (`book_id`, `name`, `vote`, `text`, `created_at`, `updated
 (20, 'Alessio', 4, 'Finale sorprendente!', NOW(), NOW()),
 (20, 'Beatrice', 5, 'Bellissimo!', NOW(), NOW()),
 (20, 'Nicola', 4, 'Ben narrato.', NOW(), NOW());
+
+
+-- Libro 1
+UPDATE books SET
+    title = 'Il buio oltre la siepe',
+    author = 'Harper Lee',
+    abstract = 'Un classico sulla giustizia e il razzismo nel profondo Sud degli Stati Uniti.',
+    image = 'buio.jpg',
+    updated_at = NOW()
+WHERE id = 1;
+
+-- Libro 2
+UPDATE books SET
+    title = '1984',
+    author = 'George Orwell',
+    abstract = 'Un futuro distopico dominato dal controllo totale e dalla repressione del pensiero.',
+    image = '1984.jpg',
+    updated_at = NOW()
+WHERE id = 2;
+
+-- Libro 3
+UPDATE books SET
+    title = 'Il grande Gatsby',
+    author = 'F. Scott Fitzgerald',
+    abstract = 'Il sogno americano e l’illusione della felicità nei ruggenti anni ’20.',
+    image = 'gatsby.jpg',
+    updated_at = NOW()
+WHERE id = 3;
+
+-- Libro 4
+UPDATE books SET
+    title = 'Orgoglio e pregiudizio',
+    author = 'Jane Austen',
+    abstract = 'Una storia d’amore e indipendenza nell’Inghilterra georgiana.',
+    image = 'orgoglio.jpg',
+    updated_at = NOW()
+WHERE id = 4;
+
+-- Libro 5
+UPDATE books SET
+    title = 'Cent’anni di solitudine',
+    author = 'Gabriel García Márquez',
+    abstract = 'Una saga familiare magica e poetica nel villaggio di Macondo.',
+    image = 'solitudine.jpg',
+    updated_at = NOW()
+WHERE id = 5;
+
+-- Libro 6
+UPDATE books SET
+    title = 'Il Signore degli Anelli',
+    author = 'J.R.R. Tolkien',
+    abstract = 'Un’epica avventura fantasy attraverso la Terra di Mezzo.',
+    image = 'anelli.jpg',
+    updated_at = NOW()
+WHERE id = 6;
+
+-- Libro 7
+UPDATE books SET
+    title = 'Harry Potter e la pietra filosofale',
+    author = 'J.K. Rowling',
+    abstract = 'L’inizio dell’avventura del mago più famoso del mondo.',
+    image = 'hp1.jpg',
+    updated_at = NOW()
+WHERE id = 7;
+
+-- Libro 8
+UPDATE books SET
+    title = 'Il giovane Holden',
+    author = 'J.D. Salinger',
+    abstract = 'Riflessioni e ribellione di un adolescente in crisi.',
+    image = 'holden.jpg',
+    updated_at = NOW()
+WHERE id = 8;
+
+-- Libro 9
+UPDATE books SET
+    title = 'La fattoria degli animali',
+    author = 'George Orwell',
+    abstract = 'Una potente allegoria politica sul totalitarismo.',
+    image = 'fattoria.jpg',
+    updated_at = NOW()
+WHERE id = 9;
+
+-- Libro 10
+UPDATE books SET
+    title = 'Lo Hobbit',
+    author = 'J.R.R. Tolkien',
+    abstract = 'La prima avventura fantastica nella Terra di Mezzo.',
+    image = 'hobbit.jpg',
+    updated_at = NOW()
+WHERE id = 10;
+
+-- Libro 11
+UPDATE books SET
+    title = 'Jane Eyre',
+    author = 'Charlotte Brontë',
+    abstract = 'Una storia di passione, indipendenza e mistero.',
+    image = 'janeeyre.jpg',
+    updated_at = NOW()
+WHERE id = 11;
+
+-- Libro 12
+UPDATE books SET
+    title = 'Il mondo nuovo',
+    author = 'Aldous Huxley',
+    abstract = 'Una distopia futuristica in cui il controllo sociale è totale.',
+    image = 'mondonuovo.jpg',
+    updated_at = NOW()
+WHERE id = 12;
+
+-- Libro 13
+UPDATE books SET
+    title = 'Il cacciatore di aquiloni',
+    author = 'Khaled Hosseini',
+    abstract = 'Una storia di amicizia e redenzione nella Kabul del passato e del presente.',
+    image = 'aquiloni.jpg',
+    updated_at = NOW()
+WHERE id = 13;
+
+-- Libro 14
+UPDATE books SET
+    title = 'Don Chisciotte della Mancia',
+    author = 'Miguel de Cervantes',
+    abstract = 'Il classico cavaliere dei mulini a vento, tra comicità e riflessione.',
+    image = 'donchisciotte.jpg',
+    updated_at = NOW()
+WHERE id = 14;
+
+-- Libro 15
+UPDATE books SET
+    title = 'Dieci piccoli indiani',
+    author = 'Agatha Christie',
+    abstract = 'Il giallo perfetto: dieci sconosciuti su un’isola, nessuna via di fuga.',
+    image = 'diecipiccoli.jpg',
+    updated_at = NOW()
+WHERE id = 15;
+
+-- Libro 16
+UPDATE books SET
+    title = 'Via col vento',
+    author = 'Margaret Mitchell',
+    abstract = 'Amore e guerra nell’America del Sud durante la guerra civile.',
+    image = 'viacolvento.jpg',
+    updated_at = NOW()
+WHERE id = 16;
+
+-- Libro 17 – Trilogia Silo 1
+UPDATE books SET
+    title = 'Wool (Silo #1)',
+    author = 'Hugh Howey',
+    abstract = 'In un futuro sotterraneo, il controllo e i segreti minacciano l’umanità.',
+    image = 'silo1.jpg',
+    updated_at = NOW()
+WHERE id = 17;
+
+-- Libro 18 – Trilogia Silo 2
+UPDATE books SET
+    title = 'Shift (Silo #2)',
+    author = 'Hugh Howey',
+    abstract = 'Le origini del Silo e il piano che ha dato inizio a tutto.',
+    image = 'silo2.jpg',
+    updated_at = NOW()
+WHERE id = 18;
+
+-- Libro 19 – Trilogia Silo 3
+UPDATE books SET
+    title = 'Dust (Silo #3)',
+    author = 'Hugh Howey',
+    abstract = 'La ribellione contro il sistema prende forma.',
+    image = 'silo3.jpg',
+    updated_at = NOW()
+WHERE id = 19;
+
+-- Libro 20
+UPDATE books SET
+    title = 'Fahrenheit 451',
+    author = 'Ray Bradbury',
+    abstract = 'In un mondo dove leggere è proibito, un pompiere riscopre il potere dei libri.',
+    image = 'fahrenheit.jpg',
+    updated_at = NOW()
+WHERE id = 20;
