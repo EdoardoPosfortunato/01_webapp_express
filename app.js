@@ -1,6 +1,8 @@
 import express from 'express'
-import connection from './db.js';
 import booksRouter from './routes/books.js'
+import notFound from './middleware/notFound.js';
+import errorHandler from './middleware/handleErr.js';
+import imagePath from './middleware/imagePath.js';
 
 
 const app = express();
@@ -15,8 +17,11 @@ app.get("/", (req, res) => {
     })
 })
 
-app.use("/books", booksRouter)
+app.use("/books", imagePath, booksRouter)
 
+app.use(notFound);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`la porta ${port} è aperta, chiudi fa freddo`)
