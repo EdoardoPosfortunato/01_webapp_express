@@ -19,7 +19,7 @@ const index = (req, res) => {
             const books = results.map((curBook) => {
                 return {
                     ...curBook,
-                    image: `${req.imagePath}/${curBook.image}`
+                    image: curBook.image ? `${req.imagePath}/${curBook.image}` : null
                 }
             })
 
@@ -57,16 +57,16 @@ const show = (req, res) => {
         } 
         if (booksResults.length === 0) {
             res.status(404).json({
-
                 error: 'book not found'
-
             })
         }
         else {
             connection.query(reviewsSql, [id], (err, reviewsResults) => {
+                const bookData = booksResults[0]
                 res.json({
                     data: {
                         ... booksResults[0],
+                        image: bookData.image ? `${req.imagePath}/${bookData.image}` : null,
                         reviews: reviewsResults,
                     },
                 })
