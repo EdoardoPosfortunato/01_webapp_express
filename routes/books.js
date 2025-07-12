@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/", booksController.indexBooks);
 
-router.get("/:id", booksController.show);
+router.get("/:slug", booksController.show);
 
 
 export default router
