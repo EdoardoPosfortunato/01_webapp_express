@@ -4,7 +4,7 @@ import booksController from '../controllers/booksControllers.js'
 const router = express.Router();
 
 
-router.get("/", booksController.index);
+router.get("/", booksController.indexBooks);
 
 router.get("/:id", booksController.show);
 

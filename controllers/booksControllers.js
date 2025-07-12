@@ -1,16 +1,32 @@
 import connection from "../db.js"
 
-const index = (req, res) => {
+const indexBooks = (req, res, next) => {
 
-    const sql = `
+    const search = req.query.name
+
+    let sql = `
     SELECT books.*, ROUND(AVG(reviews.vote), 2) AS vote_avg
     FROM books
     LEFT JOIN reviews
     ON books.id = reviews.book_id
-    GROUP BY books.id
     `;
 
-    connection.query(sql, (err, results) => {
+    const params = [];
+
+    if (search !== undefined) {
+
+    sql += `
+    WHERE books.title LIKE ?
+    `;
+        params.push(`%${search}%`)
+    }
+
+    sql += `
+    GROUP BY books.id
+    `
+
+
+    connection.query(sql, params, (err, results) => {
         if (err) {
 
             console.log(err);
@@ -33,14 +49,14 @@ const index = (req, res) => {
 
 const show = (req, res) => {
 
-    const { id } = req.params
+    const { slug } = req.params
 
     const bookSql = `
     SELECT books.*, ROUND(AVG(reviews.vote), 2) AS vote_avg
     FROM books
     LEFT JOIN reviews
     ON books.id = reviews.book_id
-    WHERE books.id = ?
+    WHERE books.slug = ?
     GROUP BY books.id;
     `;
 
@@ -49,23 +65,24 @@ const show = (req, res) => {
     FROM reviews
     WHERE reviews.book_id = ?;
     `
-    connection.query(bookSql, [id], (err, booksResults) => {
+    connection.query(bookSql, [slug], (err, booksResults) => {
+        console.log(booksResults)
         if (err) {
 
             console.log(err);
 
-        } 
+        }
         if (booksResults.length === 0) {
             res.status(404).json({
                 error: 'book not found'
             })
         }
         else {
-            connection.query(reviewsSql, [id], (err, reviewsResults) => {
-                const bookData = booksResults[0]
+            const bookData = booksResults[0]
+            connection.query(reviewsSql, [bookData.id], (err, reviewsResults) => {
                 res.json({
                     data: {
-                        ... booksResults[0],
+                        ...booksResults[0],
                         image: bookData.image ? `${req.imagePath}/${bookData.image}` : null,
                         reviews: reviewsResults,
                     },
@@ -77,7 +94,7 @@ const show = (req, res) => {
 }
 
 const booksController = {
-    index,
+    indexBooks,
     show,
 }
 
